@@ -49,13 +49,11 @@ public class loginController {
 		usuarioDAO.save(usuario);
 		return "login/autenticado";
 	}
-
 	@GetMapping("/listarUsuario") //rota 
 	public String listUsuario(Model model) {
 		model.addAttribute("lista", usuarioDAO.findAll());
 		return "login/listUsuario";
 	}
-
 	@GetMapping("/editarCargo")
 	public String editarCargo(Integer id, Model model) {
 		Usuario cargo = this.usuarioDAO.getOne(id);
