@@ -1,20 +1,11 @@
 package br.latam.oximontei.controller;
-
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
-import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.latam.oximontei.DAO.UsuarioDAO;
@@ -54,12 +45,12 @@ public class loginController {
 		return "login/cadastroUsuario";
 	}
 	@PostMapping("/addUsuario")
-	public String addUsuario(@ModelAttribute Usuario usuario) {
+	public String addUsuario(Usuario usuario) {
 		usuarioDAO.save(usuario);
 		return "login/autenticado";
 	}
 
-	@GetMapping("/listarUsuario")
+	@GetMapping("/listarUsuario") //rota 
 	public String listUsuario(Model model) {
 		model.addAttribute("lista", usuarioDAO.findAll());
 		return "login/listUsuario";

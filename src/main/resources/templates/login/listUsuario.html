@@ -13,11 +13,11 @@
 <td>nome</td>
 <td>senha</td>
 </tr>
-<tr th:each="cont:${lista}">
-<td th:text="${cont.id}"></td>
-<td th:text="${cont.nome}"></td>
-<td th:text="${cont.senha}"></td>
-<td><a th:href="@{/editarUsuario(id=${cont.id})}">Editar</a>&nbsp;&nbsp; </td>
+<tr th:each="usuario:${lista}">
+<td th:text="${usuario.id}"></td>
+<td th:text="${usuario.nome}"></td>
+<td th:text="${usuario.senha}"></td>
+<td><a th:href="@{/editarUsuario(id=${usuario.id})}">Editar</a>&nbsp;&nbsp; </td>
 
 </tr>
 </table>
