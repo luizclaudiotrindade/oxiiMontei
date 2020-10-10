@@ -1,12 +1,64 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta http-equiv="Content-Type" cont="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/cadastroProduto.css"/>
 <title>Insert title here</title>
+
 </head>
 <body>
-<h1>OI</h1>
+
+<div class="container">
+  <div class="product-form">
+    <div class="product-options-wrapper">
+      <div class="option-group" id="option-group-1">
+        <h1>Cadastrar Produto</h1>
+        <form action="addProduto" method="post">
+        <div class="option-input">
+          <label for="option-1">Cadastro de Produto</label>
+          <input type="text" min="1" max="50" id="option-1" name="nome" required />
+          
+          <span class="option-input_">Nome do produto</span>
+        </div>
+        <div class="option-input">
+          <label for="option-2">Tipo</label>
+          
+          <select class="option-input" name="tipo" required >
+          <option value="null">Selecione o Tipo de Acompanhamento</option>
+          <option>Carne</option>
+          <option>Acompanhamento</option>
+          <option>Bebida</option>
+          </select>
+        </div> 
+        <div class="option-input">
+          <label for="option-3">Status do produto</label>
+          
+          <input type="radio" value="disponivel" name="status" required />
+            <label for="disponivel">Disponivel</label>
+           <input type="radio"  value ="indisponivl" name="status" required/>
+           <label for="disponivel">Indisponivel</label>
+        </div>
+        <div class="option-input">
+          <label for="option-4">Descrição</label>
+         <textarea required  style="margin: 0px; width: 493px; height: 135px;" name="descricao" rows="" cols=""></textarea>
+        </div> 
+        <div>
+        <label  for="option-4">Valor</label>
+        <input type="number" name="valor" maxlength="10" required/>
+        </div>
+        <div class="controls">
+<button>CADASTRAR</button>
+</div>
+        </form>         
+      </div>
+    </div>
+  </div>
+	<div class="svg-container">
+		<img style="max-width:91%" src="images/cadProduto.jpg" alt="" />
+	</div>
+</div>
 
 </body>
 </html>

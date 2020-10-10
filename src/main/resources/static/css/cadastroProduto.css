@@ -1,0 +1,207 @@
+
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.container > .product-form,
+.container > .svg-container {
+  flex-basis: 100%;
+}
+
+.container > .svg-container {
+  order: 1;
+}
+
+.container > .product-form {
+  order: 2;
+}
+
+.product-options-wrapper {
+  padding: 1rem;
+  margin-right: 5rem;
+}
+
+.option-input {
+  margin-bottom: 1rem;
+  position: relative;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	width: 100%;
+  flex-wrap: wrap;
+}
+
+.option-input > label {
+  flex-basis: 100%;
+}
+
+.option-input > label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.option-input > input {
+  display: block;
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: calc(100% - 1rem);
+	border: 1px solid #ccc;
+	border-radius: 0.2rem;
+}
+
+.option-input input:not(:last-child) {
+  width: 90%;
+  border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.option-group {
+  border: 1px solid #ccc;
+  padding: 1rem;
+}
+
+.option-input_addon {
+	margin-bottom: 0;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.25;
+	color: #464a4c;
+	text-align: center;
+	background-color: #eceeef;
+	border: 1px solid rgba(0,0,0,.15);
+	border-radius: .25rem;
+}
+
+.option-input_addon:not(:first-child) {
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+	border-left: 0;
+  width: 7%;
+  vertical-align: middle;
+}
+
+.svg-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.svg-img {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  opacity: 0.5;
+  z-index: 2;
+  transition: opacity 0.75s, transform 0.75s;
+}
+
+.svg-highlight {
+  opacity: 1;
+  transform: scale(1.2, 1.2);
+}
+
+.svg-img.svg-total {
+  position: relative;
+  opacity: 0;
+  z-index: 1;
+}
+
+.svg-img.bridge {
+  top: 21.4%;
+  left: 16.3%;
+  width: 72%;
+}
+
+.svg-img.pendant {
+  width: 1.9%;
+  top: 33.2%;
+  left: 24.1%;
+}
+
+.svg-img.beam-far {
+  top: 0%;
+  left: 0%;
+  width: 67%;
+}
+
+.svg-img.beam-close {
+  top: 27.2%;
+  left: 49.8%;
+  width: 50%;
+}
+
+.svg-img.end-truck-close {
+  top: 42.9%;
+  left: 58.7%;
+  width: 34%;
+}
+
+.svg-img.trolley {
+  top: 32.7%;
+  left: 34.9%;
+  width: 11.5%;
+}
+
+.svg-img.wire-rope-hoist {
+  top: 28.9%;
+  left: 30.5%;
+  width: 21%;
+}
+.svg-img.end-truck-far {
+  top: 14.9%;
+  left: 9%;
+  width: 27.5%;
+}
+.svg-img.conductor-bar {
+  top: 1.2%;
+  left: 2.8%;
+  width: 65%;
+}
+.svg-img.festoon {
+  top: 27.7%;
+  left: 12%;
+  width: 30%;
+}
+
+.beam-close, .beam-far, .trolley {
+  z-index: 3;
+}
+
+.end-truck-close, .end-truck-far, .wire-rope-hoist, .conductor-bar, .pendant {
+  z-index: 4;
+}
+
+.festoon {
+  z-index: 5;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+label {
+  white-space: nowrap;
+}
+
+@media screen and (min-width: 768px) {
+  .container > .product-form,
+  .container > .svg-container {
+    flex-basis: 50%;
+  }
+
+  .container > .svg-container {
+    order: 2;
+  }
+
+  .container > .product-form {
+    order: 1;
+  }
+}

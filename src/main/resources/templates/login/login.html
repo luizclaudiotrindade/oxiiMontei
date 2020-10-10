@@ -187,9 +187,9 @@ body {
 		</form>
  -->
  <div class="login-box">
- 
+
   <h2>Login</h2>
-  <form action="/login" method="post" th:object="${usuario}">
+  <form action="/login" id="login" method="post" th:object="${usuario}">
 
     <div class="user-box">
       <input type="text"  name="nome" />
@@ -199,7 +199,7 @@ body {
       <input type="password" name="senha" />
       <label>Senha</label>
     </div>
-    <a type="submit" onClick="document.getElementById('login').submit();">
+    <a  onClick="document.getElementById('login').submit();">
       <span></span>
       <span></span>
       <span></span>

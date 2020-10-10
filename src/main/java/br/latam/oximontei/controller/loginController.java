@@ -26,6 +26,10 @@ public class loginController {
 		return "login/login";
 	}
 
+	@GetMapping("/areaAdm")
+	public String areaAdm() {
+		return "login/AreaAdm";
+	}
 
 	@PostMapping("/login")
 	public String efetuarLogin(Usuario usuario, RedirectAttributes ra, HttpSession session) {
@@ -33,7 +37,7 @@ public class loginController {
 		usuario = this.usuarioDAO.efetuarLogin(usuario.getNome(), usuario.getSenha());
 		if (usuario != null) {
 			session.setAttribute("usuarioLogado", usuario);
-			return "login/autenticado";
+			return "login/areaAdm";
 		} else {
 			ra.addFlashAttribute("mensagem", "Login/senha inválidos");
 			return "redirect:/";
