@@ -16,8 +16,7 @@ import br.latam.oximontei.service.UsuarioService;
 @Controller
 public class loginController {
 
-	@Autowired
-	private UsuarioService usuarioService;
+	
 	@Autowired
 	private UsuarioDAO usuarioDAO;
 
@@ -26,10 +25,7 @@ public class loginController {
 		return "login/login";
 	}
 
-	@GetMapping("/areaAdm")
-	public String areaAdm() {
-		return "login/AreaAdm";
-	}
+
 
 	@PostMapping("/login")
 	public String efetuarLogin(Usuario usuario, RedirectAttributes ra, HttpSession session) {

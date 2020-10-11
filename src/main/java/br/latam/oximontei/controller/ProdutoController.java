@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import br.latam.oximontei.DAO.ProdutoDAO;
-import br.latam.oximontei.DAO.UsuarioDAO;
 import br.latam.oximontei.model.Produto;
 @Controller
 public class ProdutoController {
