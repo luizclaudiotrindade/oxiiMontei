@@ -5,7 +5,7 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Insert title here</title>
+<title>Oxxe Montei</title>
 <style>
 html {
   height: 100%;
@@ -179,7 +179,7 @@ body {
 </head>
 <body>
 	<div class="login-box">
-  <h2>Cadastro de Usuario</h2>
+
 <form th:action="@{/addUsuario}" method="post" id="login" th:object="${usuario}">
     <div class="user-box">
     <input type="hidden" name="id_usuario" th:value="${usuario.id_usuario}"/>
@@ -212,7 +212,7 @@ body {
       <span></span>
       <span></span>
       <span></span>
-      Cadastrar
+      Salvar
     </a>
   </form>
   

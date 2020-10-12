@@ -32,12 +32,21 @@ public class loginController {
 
 
 	@PostMapping("/login")
-	public String efetuarLogin(Usuario usuario, RedirectAttributes ra, HttpSession session) {
-
+	public String efetuarLogin(Model model,Usuario usuario, RedirectAttributes ra, HttpSession session) {
+		
 		usuario = this.usuarioDAO.efetuarLogin(usuario.getNome(), usuario.getSenha());
 		if (usuario != null) {
 			session.setAttribute("usuarioLogado", usuario);
-			return "login/areaAdm";
+			model.addAttribute("usuarioLogado",usuario);
+			if(usuario.isTipoAdm() || usuario.isTipoFuncionario()) {
+				
+				return "login/areaAdm";
+			}
+			else {
+				
+				return "login/areaUsuario";
+			}
+			
 		} else {
 			ra.addFlashAttribute("mensagem", "Login/senha inválidos");
 			return "redirect:/";
@@ -54,6 +63,17 @@ public class loginController {
 		if(result.hasErrors()) {
 			return cadastro(usuario, model);
 		}
+		usuario.setTipo("Cliente");
+		usuarioDAO.save(usuario);
+		return "redirect:listarUsuario";
+	}
+	@PostMapping("/addFuncionario")
+	public String addFuncionario(@Validated Usuario usuario, BindingResult result, Model model) {
+		
+		if(result.hasErrors()) {
+			return cadastro(usuario, model);
+		}
+		usuario.setTipo("Funcionario");
 		usuarioDAO.save(usuario);
 		return "redirect:listarUsuario";
 	}

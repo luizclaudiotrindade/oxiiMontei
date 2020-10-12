@@ -38,7 +38,7 @@ public class PedidoController {
 		model.addAttribute("usuarioLogado", usuario);
 		model.addAttribute("listaPao", produtoDAO.findAllByTipo("PÃO"));
 		model.addAttribute("listaCarne", produtoDAO.findAllByTipo("CARNE"));
-		model.addAttribute("listaAcompanhamento", produtoDAO.findAllByTipo("MOLHO"));
+		model.addAttribute("listaAcompanhamento", produtoDAO.findAllByTipo("ACOMPANHAMENTO"));
 		model.addAttribute("listaBebida", produtoDAO.findAllByTipo("BEBIDA"));
 		return "Pedido/Pedido";
 	}
@@ -55,10 +55,6 @@ public class PedidoController {
 		Pedido pedidoSalvo= pedidoDAO.save(pedido);
 		
 		model.addAttribute("pedido",pedidoSalvo);
-		return "Pedido/Pagamento";
-	}
-	@GetMapping("/notaFiscal")
-	public String notaFiscal() {
 		return "Pedido/NotaFiscal";
 	}
 }

@@ -18,7 +18,7 @@ public class Usuario {
 	private String telefone;
 	private String email;
 	private String senha;
-	private String id_admin;
+	private String tipo;
 	public Integer getId_usuario() {
 		return id_usuario;
 	}
@@ -61,13 +61,23 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public String getId_admin() {
-		return id_admin;
+	public String getTipo() {
+		return tipo;
 	}
-	public void setId_admin(String id_admin) {
-		this.id_admin = id_admin;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 	
+	
+	public boolean isTipoCliente() {
+		 return this.tipo.equals("Cliente");
+	}
+	public boolean isTipoFuncionario() {
+		 return this.tipo.equals("Funcionario");
+	}
+	public boolean isTipoAdm() {
+		 return this.tipo.equals("Adm");
+	}
 
 	
 }
