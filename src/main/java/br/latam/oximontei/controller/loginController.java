@@ -1,4 +1,5 @@
 package br.latam.oximontei.controller;
+
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
@@ -16,11 +17,9 @@ import br.latam.oximontei.DAO.UsuarioDAO;
 import br.latam.oximontei.model.Usuario;
 import br.latam.oximontei.service.UsuarioService;
 
-
 @Controller
 public class loginController {
 
-	
 	@Autowired
 	private UsuarioDAO usuarioDAO;
 
@@ -29,24 +28,21 @@ public class loginController {
 		return "login/login";
 	}
 
-
-
 	@PostMapping("/login")
-	public String efetuarLogin(Model model,Usuario usuario, RedirectAttributes ra, HttpSession session) {
-		
+	public String efetuarLogin(Model model, Usuario usuario, RedirectAttributes ra, HttpSession session) {
+
 		usuario = this.usuarioDAO.efetuarLogin(usuario.getNome(), usuario.getSenha());
 		if (usuario != null) {
 			session.setAttribute("usuarioLogado", usuario);
-			model.addAttribute("usuarioLogado",usuario);
-			if(usuario.isTipoAdm() || usuario.isTipoFuncionario()) {
-				
+			model.addAttribute("usuarioLogado", usuario);
+			if (usuario.isTipoAdm() || usuario.isTipoFuncionario()) {
+
 				return "login/areaAdm";
-			}
-			else {
-				
+			} else {
+
 				return "login/areaUsuario";
 			}
-			
+
 		} else {
 			ra.addFlashAttribute("mensagem", "Login/senha inválidos");
 			return "redirect:/";
@@ -54,44 +50,50 @@ public class loginController {
 	}
 
 	@GetMapping("/cadastro")
-	public String cadastro(Usuario usuario,Model model ) {
+	public String cadastro(Usuario usuario, Model model) {
 		return "login/cadastroUsuario";
 	}
+
 	@PostMapping("/addUsuario")
 	public String addUsuario(@Validated Usuario usuario, BindingResult result, Model model) {
-		
-		if(result.hasErrors()) {
+
+		if (result.hasErrors()) {
 			return cadastro(usuario, model);
 		}
 		usuario.setTipo("Cliente");
 		usuarioDAO.save(usuario);
 		return "redirect:listarUsuario";
 	}
+
 	@PostMapping("/addFuncionario")
 	public String addFuncionario(@Validated Usuario usuario, BindingResult result, Model model) {
-		
-		if(result.hasErrors()) {
+
+		if (result.hasErrors()) {
 			return cadastro(usuario, model);
 		}
 		usuario.setTipo("Funcionario");
 		usuarioDAO.save(usuario);
 		return "redirect:listarUsuario";
 	}
-	@GetMapping("/listarUsuario") //rota 
+
+	@GetMapping("/listarUsuario") // rota
 	public String listUsuario(Model model) {
 		model.addAttribute("lista", usuarioDAO.findAll());
 		return "login/listUsuario";
 	}
+
 	@GetMapping("/editarUsuario")
 	public String editarUsuario(Integer id, Model model) {
-			Optional<Usuario> usuario = this.usuarioDAO.findById(id);
-			if(usuario.isEmpty()) {
-				return "erro/Erro";
-			}
+		Optional<Usuario> usuario = this.usuarioDAO.findById(id);
+		if (usuario.isPresent()) {
 			model.addAttribute("usuario", usuario.get());
-		 return "login/cadastroUsuario";
+			return "login/cadastroUsuario";
+		}
+
+		return "erro/Erro";
+
 	}
-	
+
 	@GetMapping("/excluirUsuario")
 	public String excluirUsuario(Integer id) {
 		this.usuarioDAO.deleteById(id);
