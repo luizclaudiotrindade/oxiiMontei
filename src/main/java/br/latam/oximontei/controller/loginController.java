@@ -1,8 +1,12 @@
 package br.latam.oximontei.controller;
+import java.util.Optional;
+
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -41,28 +45,36 @@ public class loginController {
 	}
 
 	@GetMapping("/cadastro")
-	public String cadastro() {
+	public String cadastro(Usuario usuario,Model model ) {
 		return "login/cadastroUsuario";
 	}
 	@PostMapping("/addUsuario")
-	public String addUsuario(Usuario usuario) {
+	public String addUsuario(@Validated Usuario usuario, BindingResult result, Model model) {
+		
+		if(result.hasErrors()) {
+			return cadastro(usuario, model);
+		}
 		usuarioDAO.save(usuario);
-		return "login/autenticado";
+		return "redirect:listarUsuario";
 	}
 	@GetMapping("/listarUsuario") //rota 
 	public String listUsuario(Model model) {
 		model.addAttribute("lista", usuarioDAO.findAll());
 		return "login/listUsuario";
 	}
-	@GetMapping("/editarCargo")
-	public String editarCargo(Integer id, Model model) {
-		Usuario cargo = this.usuarioDAO.getOne(id);
-		return this.listUsuario(model);
+	@GetMapping("/editarUsuario")
+	public String editarUsuario(Integer id, Model model) {
+			Optional<Usuario> usuario = this.usuarioDAO.findById(id);
+			if(usuario.isEmpty()) {
+				return "erro/Erro";
+			}
+			model.addAttribute("usuario", usuario.get());
+		 return "login/cadastroUsuario";
 	}
 	
-	@GetMapping("/excluirCargo")
-	public String excluirCargo(Integer id) {
+	@GetMapping("/excluirUsuario")
+	public String excluirUsuario(Integer id) {
 		this.usuarioDAO.deleteById(id);
-		return "redirect:/cargos";
+		return "redirect:/listarUsuario";
 	}
 }

@@ -54,7 +54,7 @@ nav a {
 }
 
 .header h1 {
-  background-color: #05a8aa;
+  background-color: #fd5401;
   color: #fff;
   font-family: "Oswald", sans-serif;
   font-size: 40px;
@@ -84,18 +84,18 @@ nav a {
 
 .button {
   border-radius: 4px;
-  color: #05a8aa;
+  color: #fd5401;
   display: block;
   font-weight: 700;
   width: 200px;
   padding: 20px;
   margin: 40px auto 40px auto;
-  border: blue solid 1px;
+  border: #fd5401 solid 1px;
 }
 
 .button:hover {
-  background-color: #05a8aa;
-  border: 1px solid #05a8aa;
+  background-color: #fd5401;
+  border: 1px solid #fd5401;
   color: #fff;
 }
 

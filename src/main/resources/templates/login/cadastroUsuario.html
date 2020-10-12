@@ -182,11 +182,29 @@ body {
   <h2>Cadastro de Usuario</h2>
 <form th:action="@{/addUsuario}" method="post" id="login" th:object="${usuario}">
     <div class="user-box">
-      <input type="text"  name="nome" />
+    <input type="hidden" name="id_usuario" th:value="${usuario.id_usuario}"/>
+      <input type="text"  name="nome" th:field="${usuario.nome}" />
       <label>Nome</label>
     </div>
     <div class="user-box">
-      <input type="password" name="senha" />
+      <input type="text"  name="cpf" th:field="${usuario.cpf}" />
+      <label>Cpf</label>
+    </div>
+    <div class="user-box">
+      <input type="text"  name="endereco" th:field="${usuario.endereco}" />
+      <label>Endereço</label>
+    </div>
+    <div class="user-box">
+      <input type="text"  name="telefone" th:field="${usuario.telefone}"/>
+      <label>Telefone</label>
+    </div>
+    <div class="user-box">
+      <input type="text"  name="email" th:field="${usuario.email}"/>
+      <label>Email</label>
+    </div>
+
+    <div class="user-box">
+      <input type="password" name="senha" th:field="${usuario.senha}"/>
       <label>Senha</label>
     </div>
     <a type="submit" onClick="document.getElementById('login').submit();">

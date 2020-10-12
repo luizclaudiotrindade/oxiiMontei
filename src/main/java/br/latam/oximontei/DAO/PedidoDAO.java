@@ -8,7 +8,5 @@ import br.latam.oximontei.model.Pedido;
 
 @Repository
 public interface PedidoDAO extends JpaRepository<Pedido, Integer> {
-
-
 	
 }

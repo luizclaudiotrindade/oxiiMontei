@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="css/pedido.css" />
+<title>Oxxe Montei</title>
+</head>
+<body>
+	<form action="pedidoBebidaSave" method="post">
+		<input type="hidden" name="id_usuario" th:value="${usuarioLogado.id_usuario}"/>
+		<table>
+			<tr th:each="bebida:${listaBebida}">
+				 <td>
+				 <input type="radio" name="id_produto" th:value="${bebida.id_produto}" 
+				 th:text="${bebida.nome}"/>
+				  - Valor <input type="text"  name="valor" th:value="${bebida.valor}" readonly/>
+				 </td>
+			</tr>
+		</table>
+		<input type="submit" value="Proximo"/>
+	</form>
+</body>
+
+</html>

@@ -1,13 +1,55 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="css/pedido.css" />
+<title>Oxxe Montei</title>
 </head>
 <body>
-Cadastrou
+	<form action="pedidoSave" method="post">
+		<input type="hidden" name="id_usuario"
+			th:value="${usuarioLogado.id_usuario}" />
+		<div>
+			<div th:each="pao:${listaPao}">
 
+				<input type="radio" name="paoId" th:value="${pao.id_produto}"
+					th:text="${pao.nome}" /> - Valor <input type="text" name="valor"
+					th:value="${pao.valor}" readonly />
+
+			</div>
+
+
+		</div>
+		<div>
+			<div th:each="carne:${listaCarne}">
+
+				<input type="radio" name="carneId" th:value="${carne.id_produto}"
+					th:text="${carne.nome}" /> - Valor <input type="text" name="valor"
+					th:value="${carne.valor}" readonly />
+
+			</div>
+
+
+		</div>
+		<div>
+			<div th:each="acompanhamento:${listaAcompanhamento}">
+				<input type="radio" name="acompanhamentoId"
+					th:value="${acompanhamento.id_produto}"
+					th:text="${acompanhamento.nome}" /> - Valor <input type="text"
+					name="valor" th:value="${acompanhamento.valor}" readonly />
+			</div>
+		</div>
+		<div>
+			<div th:each="bebida:${listaBebida}">
+				<input type="radio" name="bebidaId"
+					th:value="${bebida.id_produto}"
+					th:text="${bebida.nome}" /> - Valor <input type="text"
+					name="valor" th:value="${bebida.valor}" readonly />
+			</div>
+		</div>
+		<input type="submit" value="Proximo" />
+	</form>
 </body>
 
 </html>
