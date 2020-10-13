@@ -5,37 +5,37 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" type="text/css" href="css/cadastroUsuario.css"/> 
+<link rel="stylesheet" type="text/css" href="css/cadastroUsuario.css"/>
 <title>Oxxe Montei</title>
 </head>
 <body>
 	<div class="login-box">
 
-<form th:action="@{/addUsuario}" method="post" id="login" th:object="${usuario}">
+<form th:action="@{/addFuncionario}" method="post" id="login" th:object="${usuario}">
     <div class="user-box">
     <input type="hidden" name="id_usuario" th:value="${usuario.id_usuario}"/>
-      <input  maxlength="30"  placeholder="EX: DAVID REÍGIO" type="text"  name="nome" th:field="${usuario.nome}" th:required="required" />
+      <input type="text"  name="nome" th:field="${usuario.nome}" />
       <label>Nome</label>
     </div>
     <div class="user-box">
-      <input required maxlength="11" placeholder="00000000000" type="number"  name="cpf" th:field="${usuario.cpf}" />
+      <input type="text"  name="cpf" th:field="${usuario.cpf}" />
       <label>Cpf</label>
     </div>
     <div class="user-box">
-      <input required maxlength="60" type="text" placeholder="RUA A"  name="endereco" th:field="${usuario.endereco}" />
+      <input type="text"  name="endereco" th:field="${usuario.endereco}" />
       <label>Endereço</label>
     </div>
     <div class="user-box">
-      <input required maxlength="8" type="text" placeholder="00000000"  name="telefone" th:field="${usuario.telefone}"/>
+      <input type="text"  name="telefone" th:field="${usuario.telefone}"/>
       <label>Telefone</label>
     </div>
     <div class="user-box">
-      <input type="text"  required maxlength="40" placeholder="abc@gmail.com" name="email" th:field="${usuario.email}"/>
+      <input type="text"  name="email" th:field="${usuario.email}"/>
       <label>Email</label>
     </div>
 
     <div class="user-box">
-      <input type="password" name="senha" required maxlength="30" placeholder="********" th:field="${usuario.senha}"/>
+      <input type="password" name="senha" th:field="${usuario.senha}"/>
       <label>Senha</label>
     </div>
     <a type="submit" onClick="document.getElementById('login').submit();">

@@ -23,7 +23,7 @@ public class loginController {
 	@Autowired
 	private UsuarioDAO usuarioDAO;
 
-	@GetMapping("login2")
+	@GetMapping("login")
 	public String login() {
 		return "login/login";
 	}
@@ -31,7 +31,7 @@ public class loginController {
 	@PostMapping("/login")
 	public String efetuarLogin(Model model, Usuario usuario, RedirectAttributes ra, HttpSession session) {
 
-		usuario = this.usuarioDAO.efetuarLogin(usuario.getNome(), usuario.getSenha());
+		usuario = this.usuarioDAO.efetuarLogin(usuario.getEmail(), usuario.getSenha());
 		if (usuario != null) {
 			session.setAttribute("usuarioLogado", usuario);
 			model.addAttribute("usuarioLogado", usuario);
@@ -44,8 +44,8 @@ public class loginController {
 			}
 
 		} else {
-			ra.addFlashAttribute("mensagem", "Login/senha inválidos");
-			return "redirect:/";
+			ra.addFlashAttribute("mensagem", "* Login ou Senha inválidos");
+			return "redirect:/login";
 		}
 	}
 
@@ -62,9 +62,13 @@ public class loginController {
 		}
 		usuario.setTipo("Cliente");
 		usuarioDAO.save(usuario);
-		return "redirect:listarUsuario";
+		return "redirect:login";
 	}
 
+	@GetMapping("/cadastroFuncionario")
+	public String cadastroFuncionario(Usuario usuario, Model model) {
+		return "login/cadastroFuncionario";
+	}
 	@PostMapping("/addFuncionario")
 	public String addFuncionario(@Validated Usuario usuario, BindingResult result, Model model) {
 
@@ -73,7 +77,7 @@ public class loginController {
 		}
 		usuario.setTipo("Funcionario");
 		usuarioDAO.save(usuario);
-		return "redirect:listarUsuario";
+		return "redirect:login";
 	}
 
 	@GetMapping("/listarUsuario") // rota

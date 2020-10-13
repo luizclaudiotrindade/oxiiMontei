@@ -4,23 +4,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="css/pedido.css" />
+
 <title>Oxxe Montei</title>
 </head>
 <body>
+
 	<form action="pedidoSave" method="post">
-		<input type="hidden" name="id_usuario"
+	<input type="hidden" name="id_usuario"
 			th:value="${usuarioLogado.id_usuario}" />
-		<div>
-			<div th:each="pao:${listaPao}">
+	<div class="card"></div>
+<div class="card card-1"></div>
+<div class="card card-2"></div>
+<div class="card card-3"></div>
+<div class="card card-4"></div>
+<div class="card card-5"></div>
+		
+		
+			<div class="card card-1" th:each="pao:${listaPao}">
 
 				<input type="radio" name="paoId" th:value="${pao.id_produto}"
 					th:text="${pao.nome}" /> - Valor <input type="text" name="valor"
 					th:value="${pao.valor}" readonly />
 
 			</div>
-
-
-		</div>
 		<div>
 			<div th:each="carne:${listaCarne}">
 

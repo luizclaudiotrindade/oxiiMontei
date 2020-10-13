@@ -8,7 +8,7 @@ import br.latam.oximontei.model.Usuario;
 @Repository
 public interface UsuarioDAO extends JpaRepository<Usuario, Integer> {
 
-	@Query("SELECT u FROM Usuario u WHERE u.nome = :nome AND u.senha = :senha")
-	public Usuario efetuarLogin(String nome, String senha);
+	@Query("SELECT u FROM Usuario u WHERE u.email = :email AND u.senha = :senha")
+	public Usuario efetuarLogin(String email, String senha);
 	
 }
