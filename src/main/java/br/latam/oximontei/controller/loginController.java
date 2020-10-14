@@ -3,6 +3,8 @@ package br.latam.oximontei.controller;
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,15 +38,14 @@ public class loginController {
 			session.setAttribute("usuarioLogado", usuario);
 			model.addAttribute("usuarioLogado", usuario);
 			if (usuario.isTipoAdm() || usuario.isTipoFuncionario()) {
-
 				return "login/areaAdm";
 			} else {
-
 				return "login/areaUsuario";
 			}
-
 		} else {
 			ra.addFlashAttribute("mensagem", "* Login ou Senha inválidos");
+			
+			
 			return "redirect:/login";
 		}
 	}
@@ -96,6 +97,11 @@ public class loginController {
 
 		return "erro/Erro";
 
+	}
+	@GetMapping("/logout")
+	public String logout( HttpSession session) {
+		 session.removeAttribute("usuarioLogado");
+		 return "redirect:login";
 	}
 
 	@GetMapping("/excluirUsuario")

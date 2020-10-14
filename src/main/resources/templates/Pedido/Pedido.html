@@ -12,49 +12,37 @@
 	<form action="pedidoSave" method="post">
 	<input type="hidden" name="id_usuario"
 			th:value="${usuarioLogado.id_usuario}" />
-	<div class="card"></div>
-<div class="card card-1"></div>
-<div class="card card-2"></div>
-<div class="card card-3"></div>
-<div class="card card-4"></div>
-<div class="card card-5"></div>
-		
 		
 			<div class="card card-1" th:each="pao:${listaPao}">
 
 				<input type="radio" name="paoId" th:value="${pao.id_produto}"
-					th:text="${pao.nome}" /> - Valor <input type="text" name="valor"
+					th:text="${pao.nome}" /> -<br></br> Valor <input style="border:none"type="text" name="valor"
 					th:value="${pao.valor}" readonly />
-
+					<p th:text="${pao.descricao}"></p>
 			</div>
-		<div>
-			<div th:each="carne:${listaCarne}">
-
+			<div class="card card-2" th:each="carne:${listaCarne}">
 				<input type="radio" name="carneId" th:value="${carne.id_produto}"
-					th:text="${carne.nome}" /> - Valor <input type="text" name="valor"
+					th:text="${carne.nome}" /> -<br></br> Valor <input style="border:none" type="text" name="valor"
 					th:value="${carne.valor}" readonly />
-
+<p th:text="${carne.descricao}"></p>
 			</div>
-
-
-		</div>
-		<div>
-			<div th:each="acompanhamento:${listaAcompanhamento}">
-				<input type="radio" name="acompanhamentoId"
+			<div class="card card-3" th:each="acompanhamento:${listaAcompanhamento}">
+				<input type="radio" style="border:none" name="acompanhamentoId"
 					th:value="${acompanhamento.id_produto}"
-					th:text="${acompanhamento.nome}" /> - Valor <input type="text"
+					th:text="${acompanhamento.nome}" /> -<br></br> Valor <input style="border:none" type="text"
 					name="valor" th:value="${acompanhamento.valor}" readonly />
+			<p th:text="${acompanhamento.descricao}"></p>
 			</div>
-		</div>
-		<div>
-			<div th:each="bebida:${listaBebida}">
+			<div class="card card-4" th:each="bebida:${listaBebida}">
 				<input type="radio" name="bebidaId"
 					th:value="${bebida.id_produto}"
-					th:text="${bebida.nome}" /> - Valor <input type="text"
+					th:text="${bebida.nome}" /> -<br></br> Valor <input style="border:none" type="text"
 					name="valor" th:value="${bebida.valor}" readonly />
-			</div>
-		</div>
-		<input type="submit" value="Proximo" />
+			<p th:text="${bebida.descricao}"></p>
+			</div><br></br>
+
+		<input type="submit" value="CONFIRMAR PEDIDO" />
+		<a href="/logout">Sair</a>
 	</form>
 </body>
 

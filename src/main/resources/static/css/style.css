@@ -52,6 +52,12 @@ nav a {
   background-size: cover;
   height: 320px;
 }
+.headerContato {
+  background-image: url("https://cicloferro.com.br/wp-content/uploads/2017/02/banner-Contato.png");
+  background-position: center;
+  background-size: cover;
+  height: 320px;
+}
 
 .header h1 {
   background-color: #fd5401;
