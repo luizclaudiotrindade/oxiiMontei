@@ -6,16 +6,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!--<table>
+	<table>
 		<tr>
 			<td>nome</td>
 			<td>senha</td>
 		</tr>
-		<tr th:each="usuario:${lista}">
-			<td th:text="${usuario.id_pedido}"></td>
-			<td th:text="${usuario.id_produto}"></td>
+		<tr th:each="pedido:${lista}">
+			<td th:text="${pedido.id_pedido}"></td>			
+			<td th:each="produto:${pedido.produtos}"> <div th:text= "${produto.nome}"/></td>
+			
+			
 					
 		</tr>
-	</table>  -->
+	</table>  
 </body>
 </html>

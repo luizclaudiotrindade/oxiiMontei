@@ -3,6 +3,7 @@ package br.latam.oximontei.model;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,7 +16,7 @@ public class Pedido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_pedido;
 	private Integer id_usuario;
-	@ManyToMany
+	@ManyToMany (fetch = FetchType.EAGER)
 	@JoinColumn (name="pedidos")
 	private List<Produto>produtos;
 	private Float valor;

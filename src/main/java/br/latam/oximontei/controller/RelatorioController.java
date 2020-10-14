@@ -15,7 +15,8 @@ public class RelatorioController {
 	public String relatorio (Model model)
 	{
 		
-		model.addAttribute("lista", pedidoDAO.findAll());		
+		model.addAttribute("lista", pedidoDAO.findAll());
+		
 		return "Relatorio/relatorio";
 	}
 

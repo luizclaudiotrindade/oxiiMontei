@@ -12,4 +12,7 @@ public interface PedidoDAO extends JpaRepository<Pedido, Integer> {
 	/*@Query("SELECT u FROM pedido_produto u WHERE u.id_pedido = :idPedido AND u.id_produto = :idProduto")
 	public Pedido efetuarLogin(String idPedido, String idProduto);*/
 	
+	
+	
 }
+
